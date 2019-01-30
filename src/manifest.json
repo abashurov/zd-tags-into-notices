@@ -1,0 +1,31 @@
+{
+  "name": "Tags Into Notices",
+  "author": {
+    "name": "Aleksandr Bashurov",
+    "email": "me@abash.space",
+    "url": "https://github.com/abashurov/zd-tags-into-notices"
+  },
+  "defaultLocale": "en",
+  "private": true,
+  "location": {
+    "support": {
+      "user_sidebar": "assets/iframe.html",
+      "ticket_sidebar": "assets/iframe.html",
+      "organization_sidebar": "assets/iframe.html"
+    }
+  },
+  "version": "1.0",
+  "frameworkVersion": "2.0",
+  "parameters": [
+    {
+      "name": "tag_identifiers",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "tag_styles",
+      "type": "text",
+      "required": true
+    }
+  ]
+}
