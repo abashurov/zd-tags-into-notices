@@ -3,6 +3,7 @@ import I18n from '../javascripts/lib/i18n.js'
 
 const populateConfig = (settings) => {
   let config = { valid: true }
+	console.log(settings)
   try {
     config.tags = JSON.parse(settings.tags)
     config.styles = JSON.parse(settings.styles)
@@ -23,9 +24,10 @@ const generateView = (tags, config) => {
   return f_tags.map(tag => {
     let style = config.styles.find(style => style.name === tag.style) || ''
     if (tag.link) {
+      let link = tag.link.includes('://') ? tag.link : `http://${tag.link}`
       return `<li>
         <p style="${escape(style.style)}">${escape(tag.desc)}</p>
-        <a target="_blank" href="${escape(tag.link)}">Documentation link</a>
+        <a target="_blank" href="${escape(link)}">Documentation link</a>
       </li>`
     }
     return `<li><p style="${escape(style)}">${escape(tag.desc)}</p></li>`
@@ -37,7 +39,7 @@ export default function (args) {
   if (!config.valid) {
     return `<div class="example-app">
         <p style="line-height:2.5rem;font-site:2rem;">Failed to parse current configuration: </p>
-        <pre><code>${escape(config.message)}</code></pre>
+        <pre><code>${escape(config.message.toString())}</code></pre>
       </div>`
   } else {
     return `<div class="example-app">

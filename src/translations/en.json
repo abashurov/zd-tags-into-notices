@@ -6,11 +6,8 @@
     "installation_instructions": "Configure the tags by adding a JSON-formatted list. Refer to https://abash.space/posts/zd-tags-helper",
     "title": "Tags Into Notices"
   },
-  "default": {
-    "organizations": "organizations"
-  },
   "parameters": {
-    "tag_identifiers": "Tag list in JSON format (tag, style, link)",
-    "tag_styles": "Style list in JSON format (style, CSS)"
+    "tags": "Tag list in JSON format (name, style, description, link)",
+    "styles": "Style list in JSON format (name, CSS)"
   }
 }

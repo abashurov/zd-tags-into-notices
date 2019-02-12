@@ -1,8 +1,12 @@
-import App from '../modules/app'
+import tinApp from '../modules/app'
 
 /* global ZAFClient */
 var client = ZAFClient.init()
 
 client.on('app.registered', function (appData) {
-  return new App(client, appData)
+  return tinApp(client, appData)
+})
+
+client.on('ticket.tags.changed', function (appData) {
+  return tinApp(client, appData)
 })

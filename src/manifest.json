@@ -28,6 +28,12 @@
       "type": "multiline",
       "required": true,
       "default": "[ {\"name\":\"warn\",\"style\":\"color:#FF0000;line-height:2.5rem;font-size:2rem;\"} ]"
+    },
+    {
+      "name": "default",
+      "type": "multiline",
+      "required": "true",
+      "default": "[ {\"desc\": \"No warnings here\",\"style\":\"line-height:2.5rem;font-size:2rem;color:#00FF00;\"} ]"
     }
   ]
 }
