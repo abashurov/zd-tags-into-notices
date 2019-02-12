@@ -18,14 +18,16 @@
   "frameworkVersion": "2.0",
   "parameters": [
     {
-      "name": "tag_identifiers",
-      "type": "text",
-      "required": true
+      "name": "tags",
+      "type": "multiline",
+      "required": true,
+      "default": "[ {\"name\":\"abuser\",\"style\":\"warn\",\"desc\":\"User abuses support\",\"link\":\"example.com\"} ]"
     },
     {
-      "name": "tag_styles",
-      "type": "text",
-      "required": true
+      "name": "styles",
+      "type": "multiline",
+      "required": true,
+      "default": "[ {\"name\":\"warn\",\"style\":\"color:#FF0000;line-height:2.5rem;font-size:2rem;\"} ]"
     }
   ]
 }

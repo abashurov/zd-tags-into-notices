@@ -1,15 +1,7 @@
-/**
- *  Example app
- **/
-
 import I18n from '../../javascripts/lib/i18n'
 import { resizeContainer, render } from '../../javascripts/lib/helpers'
 import getDefaultTemplate from '../../templates/default'
-
 const MAX_HEIGHT = 1000
-const API_ENDPOINTS = {
-  organizations: '/api/v2/organizations.json'
-}
 
 class App {
   constructor (client, appData) {
@@ -21,6 +13,9 @@ class App {
     // this.initializePromise is only used in testing
     // indicate app initilization(including all async operations) is complete
     this.initializePromise = this.init()
+    this._client.on('ticket.tags.changed', this.reRender)
+    this._client.on('pane.activated', this.reRender)
+    this._client.on('app.activated', this.reRender)
   }
 
   /**
@@ -28,33 +23,24 @@ class App {
    */
   async init () {
     const currentUser = (await this._client.get('currentUser')).currentUser
-    this.states.currentUserName = currentUser.name
-
     I18n.loadTranslations(currentUser.locale)
 
-    /*const organizations = await this._client
-      .request(API_ENDPOINTS.organizations)
-      .catch(this._handleError.bind(this))
-*/
-    this.extractTags().then(tags => {
-      if (tags && tags.length) {
-        this.states.tags = tags
-      } else {
-        this.states.tags = []
-      }
-      render('.loader', getDefaultTemplate(this.states))
-
-      return resizeContainer(this._client, MAX_HEIGHT)
-    }).catch(this._handleError.bind(this))
-
-    /*if (organizations) {
-      this.states.organizations = organizations.organizations
-*/
-      // render application markup
-    //}
+    await this.reRender().catch(this._handleError.bind(this))
   }
 
-  extractTags ()  {
+  async reRender () {
+    const tags = await this.extractTags().catch(this._handleError.bind(this))
+    const settings = await this._client.metadata().catch(this._handleError.bind(this))
+
+    if (tags && settings) {
+      this.states.tags = tags
+      this.states.settings = settings.settings
+      render('.loader', getDefaultTemplate(this.states))
+      return resizeContainer(this._client, MAX_HEIGHT)
+    }
+  }
+
+  extractTags () {
     return new Promise((resolve, reject) => {
       this._client.context().then(context => {
         let locationEndpoint = undefined

@@ -3,7 +3,7 @@
     "name": "Tags Into Notices",
     "short_description": "Application to show notices if tags are present",
     "long_description": "Application that allows configuring notices to be displayed in the sidebar if some tags are present in the ticket, user, or organization",
-    "installation_instructions": "Configure the tags by adding a JSON-formatted list into tags, for example: { \"tag\"\: \"vit\", \"style\"\: \"warn\", \"link\"\: \"example.com\", \"description\"\: \"Very important ticket\" }",
+    "installation_instructions": "Configure the tags by adding a JSON-formatted list. Refer to https://abash.space/posts/zd-tags-helper",
     "title": "Tags Into Notices"
   },
   "default": {
