@@ -20,7 +20,7 @@ const generateView = (tags, config) => {
     let empty_line = config.default.desc || 'Coast is clear'
     return `<li>
       <p style="line-height:2.5rem;font-size:2rem;">${empty_line}</p>
-      </li>`
+    </li>`
   }
   return f_tags.map(tag => {
     let style = config.styles.find(style => style.name === tag.style)
@@ -37,7 +37,7 @@ const generateView = (tags, config) => {
       </li>`
     }
     return `<li><p style="${escape(style)}">${escape(tag.desc)}</p></li>`
-  })
+  }).join(`<hr style="margin:9px;" />`)
 }
 
 export default function (args) {
