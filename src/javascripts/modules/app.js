@@ -1,23 +1,28 @@
 import I18n from '../../javascripts/lib/i18n'
 import { resizeContainer, render } from '../../javascripts/lib/helpers'
+import getPreloadTemplate from '../../templates/preload'
 import getDefaultTemplate from '../../templates/default'
 const MAX_HEIGHT = 1000
 
-const tinApp = async (client, appData) => {
-  await init(client).catch(e => handleError(e))
+const tinApp = async (client, initial = false) => {
+  if (initial) {
+    await init(client).catch(e => handleError(e))
+  }
+  await fullRender(client)
 }
 
 const init = async (client) => {
   const currentUser = (await client.get('currentUser')).currentUser
   I18n.loadTranslations(currentUser.locale)
+  render('.loader', getPreloadTemplate())
   await fullRender(client).catch(e => handleError(e))
 }
 
 const fullRender = async (client) => {
   const tags = await extractTags(client).catch(e => handleError(e))
   const settings = await client.metadata().catch(e => handleError(e))
-  if (tags && settings) {
-    render('.loader', getDefaultTemplate({ "tags": tags, "settings": settings.settings }))
+  if (Boolean(tags) && Boolean(settings)) {
+    render('.app', getDefaultTemplate({ "tags": tags, "settings": settings.settings }))
     return resizeContainer(client, MAX_HEIGHT)
   }
 }

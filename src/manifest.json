@@ -32,7 +32,7 @@
     {
       "name": "default",
       "type": "multiline",
-      "required": "true",
+      "required": true,
       "default": "[ {\"desc\": \"No warnings here\",\"style\":\"line-height:2.5rem;font-size:2rem;color:#00FF00;\"} ]"
     }
   ]
