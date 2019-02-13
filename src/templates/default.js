@@ -23,11 +23,16 @@ const generateView = (tags, config) => {
       </li>`
   }
   return f_tags.map(tag => {
-    let style = config.styles.find(style => style.name === tag.style) || config.default.style || ''
+    let style = config.styles.find(style => style.name === tag.style)
+    if (!style) {
+      style = config.default.style || ''
+    } else {
+      style = style.style
+    }
     if (tag.link) {
       let link = tag.link.includes('://') ? tag.link : `http://${tag.link}`
       return `<li>
-        <p style="${escape(style.style)}">${escape(tag.desc)}</p>
+        <p style="${escape(style)}">${escape(tag.desc)}</p>
         <a target="_blank" href="${escape(link)}">Documentation link</a>
       </li>`
     }

@@ -41,7 +41,9 @@ export function render (replacedNodeSelector, htmlString) {
  * @return {String} escaped string
  */
 export function escapeSpecialChars (str) {
-  if (typeof str !== 'string') throw new TypeError('escapeSpecialChars function expects input in type String')
+  if (typeof str !== 'string') {
+    throw new TypeError(`escapeSpecialChars function expects input in type String, received ${typeof(str)}`)
+  }
 
   const escape = {
     '&': '&amp;',
