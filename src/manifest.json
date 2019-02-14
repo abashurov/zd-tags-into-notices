@@ -21,7 +21,7 @@
       "name": "tags",
       "type": "multiline",
       "required": true,
-      "default": "[ {\"name\":\"abuser\",\"style\":\"warn\",\"desc\":\"User abuses support\",\"link\":\"example.com\"} ]"
+      "default": "[ {\"name\":\"trial\",\"style\":\"warn\",\"desc\":\"Trial. Check server's license\",\"link\":\"example.com\"} ]"
     },
     {
       "name": "styles",
