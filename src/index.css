@@ -1,3 +1,7 @@
+html {
+  overflow: hidden;
+}
+
 .loader {
   left: 50%;
   position: absolute;
@@ -6,3 +10,16 @@
   width: 40px;
 }
 
+.default_text {
+  line-height:2.5rem;
+  font-size:2rem;
+}
+
+.ruler {
+  margin:9px;
+}
+
+.error_wrapper {
+  white-space: pre-wrap;
+  display: flex;
+}

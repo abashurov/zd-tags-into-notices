@@ -1,3 +1,5 @@
-export default function () {
-  return `<div class="app" />`
-}
+const preloadTemplate = `
+<div class="app" />
+`
+
+export { preloadTemplate }

@@ -21,7 +21,7 @@
       "name": "tags",
       "type": "multiline",
       "required": true,
-      "default": "[ {\"name\":\"trial\",\"style\":\"warn\",\"desc\":\"Trial. Check server's license\",\"link\":\"example.com\"} ]"
+      "default": "[ {\"name\":\"trial\",\"style\":\"warn\",\"desc\":\"Trial. Check server's license\",\"link\":\"https://example.com\"} ]"
     },
     {
       "name": "styles",
@@ -30,10 +30,10 @@
       "default": "[ {\"name\":\"warn\",\"style\":\"color:#FF0000;line-height:2.5rem;font-size:2rem;\"} ]"
     },
     {
-      "name": "default",
+      "name": "defaults",
       "type": "multiline",
       "required": true,
-      "default": "[ {\"desc\": \"No warnings here\",\"style\":\"line-height:2.5rem;font-size:2rem;color:#00FF00;\"} ]"
+      "default": "{\"desc\": \"No warnings here\",\"style\":\"line-height:2.5rem;font-size:2rem;color:#00FF00;\"}"
     }
   ]
 }

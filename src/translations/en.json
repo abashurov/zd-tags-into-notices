@@ -7,7 +7,17 @@
     "title": "Tags Into Notices"
   },
   "parameters": {
-    "tags": "Tag list in JSON format (name, style, description, link)",
-    "styles": "Style list in JSON format (name, CSS)"
+    "tags": "Tag list in JSON format with parameters \"name\", \"style\", \"description\", \"link\"",
+    "styles": "Style list in JSON format with parameters \"name\", \"css\""
+  },
+  "runtime": {
+    "doclink": "Documentation link",
+    "errors": {
+      "configParsing": "Failed to parse current configuration",
+      "apiFailure": "Failed to communicate with API",
+      "tagsLoading": "Failed to load tags",
+      "settingsLoading": "Failed to load settings",
+      "viewLoading": "Failed to render the view"
+    }
   }
 }

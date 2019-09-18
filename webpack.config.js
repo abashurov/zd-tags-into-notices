@@ -1,5 +1,5 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -69,7 +69,7 @@ module.exports = {
 
   plugins: [
     // Empties the dist folder
-    new CleanWebpackPlugin(['dist/*']),
+    new CleanWebpackPlugin(),
 
     // Copy over static assets
     new CopyWebpackPlugin([

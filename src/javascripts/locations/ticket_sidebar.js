@@ -3,7 +3,7 @@ import tinApp from '../modules/app'
 /* global ZAFClient */
 var client = ZAFClient.init()
 
-client.on('app.registered', _ => tinApp(client, true))
-client.on('*.changed', _ => tinApp(client))
-client.on('pane.activated', _ => tinApp(client))
-client.on('app.activated', _ => tinApp(client))
+client.on('app.registered', () => tinApp(client, true))
+client.on('*.changed', () => tinApp(client))
+client.on('pane.activated', () => tinApp(client))
+client.on('app.activated', () => tinApp(client))

@@ -5,8 +5,8 @@
  * @return {Promise} will resolved after resize
  */
 export function resizeContainer (client, max = Number.POSITIVE_INFINITY) {
-  const newHeight = Math.min(document.body.getBoundingClientRect().height, max)
-  return client.invoke('resize', { height: newHeight })
+    const newHeight = Math.min(document.body.getBoundingClientRect().height, max)
+    return client.invoke('resize', { height: newHeight })
 }
 
 /**
@@ -17,9 +17,9 @@ export function resizeContainer (client, max = Number.POSITIVE_INFINITY) {
  * @return {String} final template
  */
 export function templatingLoop (set, getTemplate, initialValue = '') {
-  return set.reduce((accumulator, item, index) => {
-    return `${accumulator}${getTemplate(item, index)}`
-  }, initialValue)
+    return set.reduce((accumulator, item, index) => {
+        return `${accumulator}${getTemplate(item, index)}`
+    }, initialValue)
 }
 
 /**
@@ -28,11 +28,11 @@ export function templatingLoop (set, getTemplate, initialValue = '') {
  * @param {String} htmlString new html string to be rendered
  */
 export function render (replacedNodeSelector, htmlString) {
-  const fragment = document.createRange().createContextualFragment(htmlString)
-  const replacedNode = document.querySelector(replacedNodeSelector)
-  if (replacedNode !== null) {
-    replacedNode.parentNode.replaceChild(fragment, replacedNode)
-  }
+    const fragment = document.createRange().createContextualFragment(htmlString)
+    const replacedNode = document.querySelector(replacedNodeSelector)
+    if (replacedNode !== null) {
+        replacedNode.parentNode.replaceChild(fragment, replacedNode)
+    }
 }
 
 /**
@@ -41,19 +41,19 @@ export function render (replacedNodeSelector, htmlString) {
  * @return {String} escaped string
  */
 export function escapeSpecialChars (str) {
-  if (typeof str !== 'string') {
-    throw new TypeError(`escapeSpecialChars function expects input in type String, received ${typeof(str)}`)
-  }
+    if (typeof str !== 'string') {
+        throw new TypeError(`escapeSpecialChars function expects input in type String, received ${typeof(str)}`)
+    }
 
-  const escape = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    '`': '&#x60;',
-    '=': '&#x3D;'
-  }
+    const escape = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        '`': '&#x60;',
+        '=': '&#x3D;'
+    }
 
-  return str.replace(/[&<>"'`=]/g, function (m) { return escape[m] })
+    return str.replace(/[&<>"'`=]/g, function (m) { return escape[m] })
 }
